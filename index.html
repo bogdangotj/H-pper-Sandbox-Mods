@@ -4,98 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hϟpper Sandbox Mods</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #f4f4f4; --card: #fff; --text: #333; --accent: #007bff; }
-        body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-        header { text-align: center; margin-bottom: 30px; }
-        .grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 20px; 
-            justify-content: center; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
+        :root { --bg: #0f1012; --card: #1c1e22; --text: #e0e0e0; --accent: #4a90e2; }
+        body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; line-height: 1.5; }
+        header { text-align: center; margin-bottom: 20px; }
+        
+        /* Слайдер скриншотов */
+        .slider-container { width: 100%; max-width: 500px; margin: 0 auto 20px; border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border: 1px solid #333; }
+        #screenshot-img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.5s; }
+
+        .grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-width: 1300px; margin: 0 auto; }
+        
         .card { 
-            background: var(--card); 
-            border-radius: 8px; 
-            padding: 20px; 
-            width: 100%; 
-            max-width: 280px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            background: var(--card); border-radius: 12px; padding: 20px; 
+            width: 100%; max-width: 320px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; box-sizing: border-box;
         }
-        .card img { width: 64px; height: 64px; margin-bottom: 15px; border-radius: 12px; }
-        .card h2 { margin: 10px 0; font-size: 1.4em; }
-        .card .version { opacity: 0.6; font-size: 0.9em; margin-bottom: 10px; }
-        .card p { font-size: 0.95em; flex-grow: 1; }
+        .card img.mod-icon { width: 70px; height: 70px; margin: 0 auto 15px; border-radius: 15px; display: block; }
+        .card h2 { margin: 5px 0; text-align: center; font-size: 1.5em; color: #fff; }
+        .card .version { text-align: center; opacity: 0.5; font-size: 0.85em; margin-bottom: 15px; font-weight: 600; }
+        
+        /* Поддержка длинных текстов и переносов \n */
+        .card p { 
+            font-size: 0.92em; flex-grow: 1; white-space: pre-wrap; 
+            text-align: left; margin-bottom: 20px; color: #bbb;
+            word-break: break-word; overflow-wrap: break-word;
+        }
+        
         .btn { 
-            background: var(--accent); 
-            color: #fff; 
-            text-decoration: none; 
-            padding: 10px 20px; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            width: 100%;
-            box-sizing: border-box;
+            background: var(--accent); color: #fff; text-decoration: none; 
+            padding: 12px; border-radius: 8px; font-weight: bold; 
+            text-align: center; transition: transform 0.2s;
         }
-        /* Адаптив для совсем маленьких экранов */
-        @media (max-width: 320px) {
-            body { padding: 10px; }
-            .card { padding: 15px; }
-        }
+        .btn:active { transform: scale(0.97); }
+
+        @media (max-width: 480px) { .card { max-width: 100%; } }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 id="site-title">Hϟpper Sandbox Mods</h1>
+    <h1 id="site-title">Загрузка...</h1>
+    <div class="slider-container">
+        <img id="screenshot-img" src="" alt="Screenshot">
+    </div>
 </header>
 
-<div class="grid" id="mods-container">
-    </div>
+<div class="grid" id="mods-container"></div>
 
 <script>
-    <script>
-    async function loadConfig() {
-        const container = document.getElementById('mods-container');
-        try {
-            const response = await fetch('config.json');
-            if (!response.ok) throw new Error('Не удалось загрузить config.json');
-            
-            const data = await response.json();
-            
-            document.title = data.siteName;
-            document.getElementById('site-title').innerText = data.siteName;
-            
-            container.innerHTML = ''; // Очищаем контейнер перед загрузкой
+    // --- НАСТРОЙКА СКРИНШОТОВ ---
+    const screenshots = ["scr1.png", "scr2.png", "scr3.png"]; // Добавляй сюда имена файлов
+    let currentScr = 0;
+    const scrImg = document.getElementById('screenshot-img');
 
+    function rotateScreenshots() {
+        if (screenshots.length === 0) return;
+        scrImg.style.opacity = 0;
+        setTimeout(() => {
+            scrImg.src = screenshots[currentScr];
+            scrImg.style.opacity = 1;
+            currentScr = (currentScr + 1) % screenshots.length;
+        }, 500);
+    }
+    
+    if (screenshots.length > 0) {
+        scrImg.src = screenshots[0];
+        setInterval(rotateScreenshots, 10000); // 10 секунд
+    }
+
+    // --- ЗАГРУЗКА КОНФИГА ---
+    async function init() {
+        try {
+            const res = await fetch('config.json');
+            const data = await res.json();
+            
+            document.getElementById('site-title').innerText = data.siteName;
+            const container = document.getElementById('mods-container');
+            
             data.mods.forEach(mod => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                    <img src="${mod.icon}" alt="${mod.type}" onerror="this.src='https://via.placeholder.com/64?text=APK'">
+                    <img src="${mod.icon}" class="mod-icon" alt="icon">
                     <h2>${mod.type}</h2>
-                    <div class="version">Версия: ${mod.version}</div>
+                    <div class="version">v${mod.version}</div>
                     <p>${mod.description}</p>
-                    <a href="${mod.link}" class="btn">Скачать APK</a>
+                    <a href="${mod.link}" class="btn">СКАЧАТЬ APK</a>
                 `;
                 container.appendChild(card);
             });
-        } catch (err) {
-            console.error(err);
-            container.innerHTML = `<p style="color:red">Ошибка загрузки данных. Убедитесь, что config.json лежит рядом с сайтом и запущен сервер.</p>`;
+        } catch (e) {
+            document.getElementById('site-title').innerText = "Ошибка загрузки";
         }
     }
 
-    loadConfig();
-
+    init();
 </script>
 
 </body>

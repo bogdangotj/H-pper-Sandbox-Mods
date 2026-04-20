@@ -1,0 +1,33 @@
+{
+  "siteName": "Hϟpper Sandbox Mod Menu",
+  "mods": [
+    {
+      "type": "PRIV",
+      "version": "1.0.0",
+      "icon": "priv_icon.png",
+      "description": "Приватная версия со всеми разблокированными функциями и эксклюзивными предметами.",
+      "link": "https://github.com/твой-репо/downloads/mod_priv.apk"
+    },
+    {
+      "type": "LITE",
+      "version": "1.2.5",
+      "icon": "lite_icon.png",
+      "description": "Облегченная версия для слабых устройств. Минимум веса, максимум FPS.",
+      "link": "https://github.com/твой-репо/downloads/mod_lite.apk"
+    },
+    {
+      "type": "DEV",
+      "version": "2.0.0-alpha",
+      "icon": "dev_icon.png",
+      "description": "Тестовая сборка для поиска багов. Новые функции Unity-мода появляются здесь первыми.",
+      "link": "https://github.com/твой-репо/downloads/mod_dev.apk"
+    },
+    {
+      "type": "OLD",
+      "version": "0.9.8",
+      "icon": "old_icon.png",
+      "description": "Старая стабильная версия для тех, кому не зашли обновления.",
+      "link": "https://github.com/твой-репо/downloads/mod_old.apk"
+    }
+  ]
+}

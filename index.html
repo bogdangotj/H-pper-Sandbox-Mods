@@ -62,18 +62,25 @@
     </div>
 
 <script>
-    fetch('config.json')
-        .then(response => response.json())
-        .then(data => {
+    <script>
+    async function loadConfig() {
+        const container = document.getElementById('mods-container');
+        try {
+            const response = await fetch('config.json');
+            if (!response.ok) throw new Error('Не удалось загрузить config.json');
+            
+            const data = await response.json();
+            
             document.title = data.siteName;
             document.getElementById('site-title').innerText = data.siteName;
-            const container = document.getElementById('mods-container');
             
+            container.innerHTML = ''; // Очищаем контейнер перед загрузкой
+
             data.mods.forEach(mod => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                    <img src="${mod.icon}" alt="${mod.type}">
+                    <img src="${mod.icon}" alt="${mod.type}" onerror="this.src='https://via.placeholder.com/64?text=APK'">
                     <h2>${mod.type}</h2>
                     <div class="version">Версия: ${mod.version}</div>
                     <p>${mod.description}</p>
@@ -81,8 +88,14 @@
                 `;
                 container.appendChild(card);
             });
-        })
-        .catch(err => console.error('Ошибка загрузки конфига:', err));
+        } catch (err) {
+            console.error(err);
+            container.innerHTML = `<p style="color:red">Ошибка загрузки данных. Убедитесь, что config.json лежит рядом с сайтом и запущен сервер.</p>`;
+        }
+    }
+
+    loadConfig();
+
 </script>
 
 </body>

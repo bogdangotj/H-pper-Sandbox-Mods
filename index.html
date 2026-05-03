@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Моды на Hypper Sandbox">
-    <title>Hϟpper Sandbox Mods</title>
+    <title>Hypper Sandbox Mods</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #0b0c0e; --card: #16181d; --text: #cfd2d6; --accent: #3b82f6; }
@@ -12,7 +12,6 @@
         header { text-align: center; margin-bottom: 25px; padding-top: 10px; }
         h1 { color: #fff; font-size: 1.8rem; margin-bottom: 15px; }
 
-        /* Слайдер скриншотов */
         .slider-box { 
             width: 95%; max-width: 600px; margin: 0 auto 25px; 
             border-radius: 12px; overflow: hidden; background: #000; 
@@ -20,7 +19,6 @@
         }
         #screenshot-img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.4s; }
 
-        /* Сетка карточек */
         .grid { 
             display: flex; flex-wrap: wrap; gap: 20px; 
             justify-content: center; max-width: 1400px; margin: 0 auto; 
@@ -38,19 +36,21 @@
             margin-bottom: 15px; font-weight: bold; color: var(--accent);
         }
         
-        /* Описание с поддержкой \n и длинных слов */
         .card p { 
             font-size: 0.9rem; flex-grow: 1; white-space: pre-wrap; 
             text-align: left; margin-bottom: 20px; color: #a1a1aa;
             word-break: break-word; overflow-wrap: anywhere;
         }
         
+        /* Контейнер для кнопок */
+        .download-container { display: flex; flex-direction: column; gap: 8px; }
+
         .download-btn { 
-            background: var(--accent); color: #fff; text-decoration: none; 
+            color: #fff; text-decoration: none; 
             padding: 14px; border-radius: 10px; font-weight: 700; 
-            text-align: center; font-size: 1rem;
+            text-align: center; font-size: 1rem; transition: filter 0.2s;
         }
-        .download-btn:active { background: #2563eb; transform: scale(0.98); }
+        .download-btn:active { transform: scale(0.98); filter: brightness(0.8); }
 
         @media (max-width: 600px) { h1 { font-size: 1.4rem; } .card { max-width: 100%; } }
     </style>
@@ -58,7 +58,7 @@
 <body>
 
 <header>
-    <h1 id="main-title">Hϟpper Sandbox Mods</h1>
+    <h1 id="main-title">H?pper Sandbox Mods</h1>
     <div class="slider-box">
         <img id="screenshot-img" src="scr1.jpg" alt="No image">
     </div>
@@ -67,50 +67,60 @@
 <div class="grid" id="container"></div>
 
 <script>
-    // КОНФИГ
     const config = {
-      "siteName": "Hϟpper Sandbox Mods",
+      "siteName": "Hypper Sandbox Mods",
       "screenshots": ["scr1.jpg", "scr2.jpg", "scr3.jpg", "scr4.jpg", "scr5.jpg", "scr6.jpg"],
       "mods": [
+        {
+          "type": "LITE",
+          "version": "1.0",
+          "icon": "2ic.png",
+          "description": "Что такое 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 𝗟𝗜𝗧𝗘 𝗺𝗼𝗱?\nЧтож, это мой второй мод на известную игру 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 который изначально нацелен на то чтобы дать чистый геймплей (Хотел назвать 𝗖𝗟𝗘𝗔𝗥 но получилось только как 𝗟𝗜𝗧𝗘), он дает жить без рекламы, доната, лишних элементов и поэтому он мой лучший мод из 4, итак я не буду описывать все но вот:\n\n-Даны все анимации, шапки, скины игры\n-BetaHub (+)\n-BETA (переименовано в LITE)\n-Text (+)\n-Icon (+)\n-Loading (Переименовано в LITE X.X)\n-Скрыты баннеры в меню\n-Отдельное приложение\n-Изменена иконка и имя приложения\n-Удалена реклама\n( (+) значит что элемент показан, (-) что скрыт.)\n\n(Если вас спросят \"вы читер?\" то я дал определение «Псевдо читер» так как вы и не читер с модом но и не обычный игрок, что-то среднее)\n\nВсе это дает ощутить чистый опыт от хайпера\n\nПриятного времяпровождения! 🌿 😊\n\nАвтор мода: @𝗯𝗼𝗴𝗱𝗮𝗻𝗴𝗼𝘁𝗷",
+          "downloads": [
+            { "name": "Telegram", "color": "#10b981", "link": "https://t.me/HypperSandbox2026/669" },
+            { "name": "Google Drive", "color": "#FB2005", "link": "https://drive.google.com/file/d/1GAadoJ8YHK0saZTTdb9pGNON5tFh3civ/view?usp=drivesdk" }
+          ]
+        },
         {
           "type": "PRIV",
           "version": "0.2",
           "icon": "4ic.png",
           "description": "Что такое 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 𝗣𝗥𝗜𝗩 𝗺𝗼𝗱?\nЧтож, это мой четвертый мод на известную игру 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 который является приватккой хайпер, в нём отдельные сервера и меньше задержки из-за того что нет нагрузки, вы все еще можете играть с другими если у них тоже будет 𝗣𝗥𝗜𝗩 𝗺𝗼𝗱\n\n(𝗣𝗥𝗜𝗩 основан на моде 𝗟𝗜𝗧𝗘)\n\nВсе это дает ощутить чистый опыт от хайпера, ведь игроков мешающих вам нет)\n\nПриятного времяпровождения! 🌿 😊\n\nАвтор мода: @𝗯𝗼𝗴𝗱𝗮𝗻𝗴𝗼𝘁𝗷",
-          "link": "https://t.me/HypperSandbox2026/614"
-        },
-        {
-          "type": "LITE",
-          "version": "0.8",
-          "icon": "2ic.png",
-          "description": "Что такое 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 𝗟𝗜𝗧𝗘 𝗺𝗼𝗱?\nЧтож, это мой второй мод на известную игру 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 который изначально нацелен на то чтобы дать чистый геймплей...\n\n-Даны все анимации, шапки, скины игры\n-BetaHub (+)\n-BETA (переименовано в LITE)\n-Удалена реклама\n\nПриятного времяпровождения! 🌿 😊\n\nАвтор мода: @𝗯𝗼𝗴𝗱𝗮𝗻𝗴𝗼𝘁𝗷",
-          "link": "https://t.me/HypperSandbox2026/608"
-        },
-        {
-          "type": "DEV",
-          "version": "1.4",
-          "icon": "1ic.png",
-          "description": "Что такое 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 𝗗𝗘𝗩 𝗺𝗼𝗱?\nВ моде 1000 хп и открыт вырезанный контент:\n-HatItem (+)\n-Parking Lot (+)\n-IngameDebugConsole (+)\n-ХП 1000\n\nПриятного времяпровождения! 🌿 😊\n\nАвтор мода: @𝗯𝗼𝗴𝗱𝗮𝗻𝗴𝗼𝘁𝗷",
-          "link": "https://t.me/HypperSandboxMods/17"
-        },
-        {
-          "type": "XON",
-          "version": "1",
-          "icon": "missing.png",
-          "description": "HypperXON.V1.apk\n\nHypper XON v1\n\nЭто модифицированная версия апк оригинального Hypper Sandbox в котором стали доступны:\n\n- Все анимации\n- Все скины\n- Все шапки\n\nА также теперь шапка HatDebug заменена на рабочую в мультиплеере HatSanta.",
-          "link": "https://t.me/HypperSandbox2026/534"
+          "downloads": [
+            { "name": "Telegram", "color": "#3b82f6", "link": "https://t.me/HypperSandbox2026/614" }
+          ]
         },
         {
           "type": "OLD",
           "version": "0.3",
           "icon": "3ic.png",
           "description": "Что такое 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 𝗢𝗟𝗗 𝗺𝗼𝗱?\nЧтож, это мой третий мод на известную игру 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 который нацелен на то чтобы дать ощутить старый геймплей, он дает все то что есть в LITE, итак я не буду описывать все, скачайте если вас заинтересовало, кстати сервера на этой 0.5.0.1 до сих пор работают.\n\n(Если вас спросят \"вы читер?\" то я дал определение «Псевдо читер» так как вы и не читер с модом но и не обычный игрок, что-то среднее)\n\nВсе это дает ощутить олдовый опыт от хайпера\n\nПриятного времяпровождения! 🌿 😊\n\nАвтор мода: @𝗯𝗼𝗴𝗱𝗮𝗻𝗴𝗼𝘁𝗷",
-          "link": "https://t.me/HypperSandbox2026/605"
+          "downloads": [
+            { "name": "Telegram", "color": "#3b82f6", "link": "https://t.me/HypperSandbox2026/614" }
+          ]
+        },
+        {
+          "type": "DEV",
+          "version": "1.4",
+          "icon": "1ic.png",
+          "description": "Что такое 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 𝗗𝗘𝗩 𝗺𝗼𝗱?\nЧтож, это мой первый мод на известную игру 𝗛ϟ𝗽𝗽𝗲𝗿 𝗦𝗮𝗻𝗱𝗯𝗼𝘅 который изначально был нацелен на то чтобы вернуть или хотя бы показать вырезанный контент из игры, однако в обновлениях я превносил все больше разных изменений и сейчас мод даже немного чит ведь в нем 1000 хп, итак я не буду описывать все но вот:\n-HatItem (+)\n-HatFrame (+)\n-Parking Lot (+)\n-Bump010 (+)\n-Report (+)\n-ClearPlayerPrefsTest (+)\n-QuickConnectTest (+)\n-IngameDebugConsole (+)\n-Coin (+)\n-BetaHub (+)\n-Rooms (+)\n-BETA (переименовано в DEV)\n-Text (+)\n-PoliciButton (+)\n-Icon (+)\n-Loading (Переименовано в DEV 1.X)\n-Скрыты баннеры в меню\n-Отдельное приложение\n-Изменена иконка и имя приложения\n-ХП 1000 (визуально будет 100 но это не так, также это будет лишь до того момента как вы умрёте)\n( (+) значит что элемент показан)\n\nТакже дает все анимации, шапки, скины игры.\n(Если вас спросят \"вы читер?\" то я дал определение «Псевдо читер» так как вы и не читер с модом но и не обычный игрок, что-то среднее)\n\nВсе это дает ощутить опыт хайпера который мы так и не получили, ведь все это просто пылится в файлах игры и не удаляется а содержится там как будто в лимбе...\n\nПриятного времяпровождения! 🌿 😊\n\nАвтор мода: @𝗯𝗼𝗴𝗱𝗮𝗻𝗴𝗼𝘁𝗷",
+          "downloads": [
+            { "name": "Telegram", "color": "#3b82f6", "link": "https://t.me/HypperSandboxMods/17" },
+            { "name": "SOON", "color": "#ef4444", "link": "https://t.me/HypperSandboxMods/17" }
+          ]
+        },
+        {
+          "type": "XON",
+          "version": "1",
+          "icon": "missing.png",
+          "description": "Это модифицированная версия апк оригинального Hypper Sandbox в котором стали доступны:\n\n- Все анимации\n- Все скины\n- Все шапки\n\nА также теперь шапка HatDebug заменена на рабочую в мультиплеере HatSanta.",
+          "downloads": [
+            { "name": "Telegram", "color": "#3b82f6", "link": "https://t.me/HypperSandbox2026/534" }
+          ]
         }
       ]
     };
 
-    // Рендер сайта
     function render() {
         document.getElementById('main-title').innerText = config.siteName;
         const container = document.getElementById('container');
@@ -118,18 +128,29 @@
         config.mods.forEach(mod => {
             const card = document.createElement('div');
             card.className = 'card';
+            
+            // Генерируем HTML для кнопок скачивания
+            const buttonsHtml = mod.downloads.map(dl => `
+                <a href="${dl.link}" 
+                   class="download-btn" 
+                   style="background-color: ${dl.color}">
+                   ${dl.name}
+                </a>
+            `).join('');
+
             card.innerHTML = `
                 <img src="${mod.icon}" class="mod-icon" onerror="this.src='https://via.placeholder.com/80/222/fff?text=APK'">
                 <h2>${mod.type}</h2>
                 <div class="version-badge">VERSION ${mod.version}</div>
                 <p>${mod.description}</p>
-                <a href="${mod.link}" class="download-btn">СКАЧАТЬ .APK</a>
+                <div class="download-container">
+                    ${buttonsHtml}
+                </div>
             `;
             container.appendChild(card);
         });
     }
 
-    // Логика слайдера
     let currentIdx = 0;
     const imgElement = document.getElementById('screenshot-img');
 
